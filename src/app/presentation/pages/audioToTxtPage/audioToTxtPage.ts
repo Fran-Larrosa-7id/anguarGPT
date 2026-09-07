@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './audioToTxtPage.html',
 })
-export class AudioToTxtPage {}
+export default class AudioToTxtPage {}

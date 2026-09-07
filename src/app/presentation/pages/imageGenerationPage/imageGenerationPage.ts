@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './imageGenerationPage.html',
 })
-export class ImageGenerationPage {}
+export default class ImageGenerationPage {}

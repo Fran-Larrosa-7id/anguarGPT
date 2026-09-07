@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './imageTunningPage.html',
 })
-export class ImageTunningPage {}
+export default class ImageTunningPage {}

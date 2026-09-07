@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './proConsPage.html',
 })
-export class ProConsPage {}
+export default class ProConsPage {}

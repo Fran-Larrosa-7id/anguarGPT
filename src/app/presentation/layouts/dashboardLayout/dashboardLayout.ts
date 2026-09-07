@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-layout',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './dashboardLayout.html',
 })
 export class DashboardLayout {}

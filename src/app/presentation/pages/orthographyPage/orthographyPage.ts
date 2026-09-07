@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './orthographyPage.html',
 })
-export class OrthographyPage {}
+export default class OrthographyPage {}

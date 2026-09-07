@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './prosConsStreamPage.html',
 })
-export class ProsConsStreamPage {}
+export default class ProsConsStreamPage {}
