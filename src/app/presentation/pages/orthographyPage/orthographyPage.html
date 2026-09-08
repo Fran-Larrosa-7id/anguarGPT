@@ -4,9 +4,12 @@
       <!-- Message items will be rendered here -->
       <app-chat-message [text]="'Hola, ¿cómo estás?'" />
       <app-my-message [text]="'¡Hola! Estoy bien, gracias. ¿Y tú?'" />
+      @for (message of messages(); track $index) {
+        <app-my-message [text]="message" />
+      }
       <app-typing-loader />
     </div>
   </div>
 
-  <!-- MessageBOX -->
+  <app-text-message-box (onMessage)="handleMessage($event)" />
 </div>
