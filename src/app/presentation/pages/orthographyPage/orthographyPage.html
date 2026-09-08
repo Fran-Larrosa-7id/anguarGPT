@@ -2,12 +2,17 @@
   <div class="chat-messages">
     <div class="grid gap-y-2">
       <!-- Message items will be rendered here -->
-      <app-chat-message [text]="'Hola, ¿cómo estás?'" />
-      <app-my-message [text]="'¡Hola! Estoy bien, gracias. ¿Y tú?'" />
       @for (message of messages(); track $index) {
-        <app-my-message [text]="message" />
+        @if (message.isGpt) {
+          <app-chat-message [text]="message.text" />
+        } @else {
+          <app-my-message [text]="message.text" />
+        }
       }
-      <app-typing-loader />
+
+      @if (isLoading()) {
+        <app-typing-loader />
+      }
     </div>
   </div>
 

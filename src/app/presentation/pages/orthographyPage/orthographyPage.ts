@@ -11,6 +11,7 @@ import {
   TextMessageBoxEvent,
   TextMessageBoxSelect,
 } from '../../components/text-boxes/textMessageBoxSelect/textMessageBoxSelect';
+import { Message } from '../../../interfaces/message.interface';
 
 @Component({
   selector: 'app-orthography-page',
@@ -25,7 +26,9 @@ import {
   templateUrl: './orthographyPage.html',
 })
 export default class OrthographyPage {
-  readonly messages = signal<string[]>([]);
+  public isLoading = signal(false);
+  public messages = signal<Message[]>([{ text: 'Hola, ¿cómo estás?', isGpt: true }]);
+  readonly messagesWithSelect = signal<TextMessageBoxEvent[]>([]);
   readonly messagesWithFiles = signal<MessageWithFiles[]>([]);
   readonly options = signal([
     { id: '1', txt: 'Opción 1' },
@@ -38,10 +41,12 @@ export default class OrthographyPage {
   }
 
   handleMessage(message: string): void {
-    this.messages.update((messages) => [...messages, message]);
+    this.messages.update((messages) => [...messages, { text: message, isGpt: false }]);
   }
 
   handleMessageWithSelect(event: TextMessageBoxEvent): void {
-    this.messages.update((messages) => [...messages, event.message]);
+    this.messagesWithSelect.update((messages) => [...messages, event]);
+    console.log('SELECT->', this.messagesWithSelect());
+    this.messagesWithSelect.set([]);
   }
 }
