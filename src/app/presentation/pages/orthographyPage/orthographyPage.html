@@ -5,12 +5,16 @@
       <app-chat-message [text]="'Hola, ¿cómo estás?'" />
       <app-my-message [text]="'¡Hola! Estoy bien, gracias. ¿Y tú?'" />
       @for (message of messages(); track $index) {
-        <app-my-message [text]="message.message" />
+        <app-my-message [text]="message" />
       }
       <app-typing-loader />
     </div>
   </div>
 
   <!-- <app-text-message-box (onMessage)="handleMessage($event)" /> -->
-  <app-text-messagebox-file (onMessage)="handleMessage($event)" />
+  <!-- <app-text-messagebox-file (onMessage)="handleMessage($event)" /> -->
+  <app-text-message-box-select
+    [options]="options()"
+    (onMessage)="handleMessageWithSelect($event)"
+  />
 </div>
