@@ -1,32 +1,19 @@
 import { Component, inject, signal } from '@angular/core';
-import { ChatMessage } from '../../components/chat-bubbles/chatMessage/chatMessage';
-import { MyMessage } from '../../components/chat-bubbles/myMessage/myMessage';
-import { TypingLoader } from '../../components/typingLoader/typingLoader';
-import { TextMessageBox } from '../../components/text-boxes/textMessageBox/textMessageBox';
-import {
-  MessageWithFiles,
-  TextMessageboxFile,
-} from '../../components/text-boxes/textMessageboxFile/textMessageboxFile';
-import {
-  TextMessageBoxEvent,
-  TextMessageBoxSelect,
-} from '../../components/text-boxes/textMessageBoxSelect/textMessageBoxSelect';
-import { Message } from '../../../interfaces/message.interface';
-import { OpenAIService } from '../../services/openai.service';
+import { Message } from '../../interfaces/message.interface';
+import { MessageWithFiles } from '../../presentation/components/text-boxes/textMessageboxFile/textMessageboxFile';
+import { TextMessageBoxEvent } from '../../presentation/components/text-boxes/textMessageBoxSelect/textMessageBoxSelect';
+import { OpenAIService } from '../../presentation/services/openai.service';
+import { ChatMessage } from '../../presentation/components/chat-bubbles/chatMessage/chatMessage';
+import { MyMessage } from '../../presentation/components/chat-bubbles/myMessage/myMessage';
+import { TypingLoader } from '../../presentation/components/typingLoader/typingLoader';
+import { TextMessageBox } from '../../presentation/components/text-boxes/textMessageBox/textMessageBox';
 
 @Component({
-  selector: 'app-orthography-page',
-  imports: [
-    ChatMessage,
-    MyMessage,
-    TypingLoader,
-    TextMessageBox,
-    TextMessageboxFile,
-    TextMessageBoxSelect,
-  ],
-  templateUrl: './orthographyPage.html',
+  selector: 'app-chat-template',
+  imports: [ChatMessage, MyMessage, TypingLoader, TextMessageBox],
+  templateUrl: './chatTemplate.html',
 })
-export default class OrthographyPage {
+export class ChatTemplate {
   public openAiService = inject(OpenAIService);
   public isLoading = signal(false);
   public messages = signal<Message[]>([{ text: 'Hola, ¿cómo estás?', isGpt: true }]);
