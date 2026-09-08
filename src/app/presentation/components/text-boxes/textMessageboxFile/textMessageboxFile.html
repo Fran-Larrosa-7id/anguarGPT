@@ -1,0 +1,42 @@
+<form
+  [formRoot]="messageForm"
+  action=""
+  class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4"
+>
+  <div class="mr-3">
+    <button
+      (click)="fileInput.click()"
+      type="button"
+      class="flex items-center justify-center text-gray-400 cursor-pointer"
+    >
+      <i class="fa-solid fa-paperclip"></i>
+    </button>
+  </div>
+
+  <input hidden #fileInput type="file" (change)="handleSelectedFiles($event)" />
+
+  <div class="flex grow">
+    <div class="relative w-full">
+      <input
+        [formField]="messageForm.message"
+        type="text"
+        autofocus
+        placeholder="Escribe un mensaje..."
+        [autocomplete]="disabledCorrections() ? 'on' : 'off'"
+        [spellcheck]="disabledCorrections() ? 'on' : 'off'"
+        class="w-full h-10 pl-4 pr-12 text-sm text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+      />
+    </div>
+  </div>
+
+  <div class="ml-4">
+    <button
+      [disabled]="messageForm().invalid()"
+      type="submit"
+      class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+      ngclass="disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </div>
+</form>
